@@ -1,38 +1,40 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
+  display:flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  height: 100%;
+  border: 1px dotted #454855;
+  border-radius: 2px;
+  padding: 5px;
+  font-family: 'Fontawesome', sans-serif;
+  box-shadow: 2px 2px 1px 0 #d2d2d2;
+
 }
 
-.App-link {
-  color: #61dafb;
+.img_container {
+  background: url('./Logos/cw_logo.png');
+  background-size: cover;
+  width: 40px;
+  height: 20px;
+  align-self: flex-start;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+h1 {
+  margin-bottom: 5px;
+  padding: 10px;
+}
+
+h5 {
+  margin: 0;
+  padding: 0;
+}
+
+#results {
+  border: 1px solid #454855;
+  height: 20px;
+  width: 100px;
+  background-color: white;
+  border-radius: 1px;
 }
