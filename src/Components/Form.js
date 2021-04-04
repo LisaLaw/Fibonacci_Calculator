@@ -1,35 +1,41 @@
 import React, { Component } from 'react';
 import '../Styles/form.css';
 
-function handleChange() {
+function clearResult() {
     var results = document.getElementById("results");
-    var error = document.getElementById("error_message");
-
-    var rootElem = document.getElementById('root');
-    var root_children = rootElem.childNodes;
     if (results) {
         results.innerHTML = '';
     }
-    if (error) {
-        root_children[0].unmountComponentAtNode();
-    }
     return null;
+}
+
+function removeErrorMessage() {
+    var error = document.getElementById("error_message");
+    error.parentNode.removeChild(error);
 }
 
 function fib(n) {
     var rootElem = document.getElementById('root');
     var root_children = rootElem.childNodes;
-    var error = document.createElement('div', { id: 'error_message' }, '');
+    if (!document.getElementById("error_message")) {
+        var error = document.createElement('div');
+        error.id = 'error_message';
+    }
+    else if (document.getElementById("error_message").innerHTML !== '') {
+        removeErrorMessage();
+        var error = document.createElement('div');
+        error.id = 'error_message';
+    }
 
     if (n < 0) {
         root_children[0].appendChild(error);
         error.innerHTML = 'Please choose a positive input.';
-        handleChange();
+        clearResult();
     }
     else if (n % 1 !== 0) {
         root_children[0].appendChild(error);
         error.innerHTML = 'Please choose an integer.';
-        handleChange();
+        clearResult();
     }
     else if (n < 2) {
         return n;
@@ -53,7 +59,7 @@ class Form extends Component {
         return (
             < form className="form" onSubmit={this.handleSubmit}>
                 <label htmlFor="fib_nr">Type in a number:
-                    <input type="number" id="fib_nr" name="fib_nr" required="required" oninvalid="this.setCustomValidity('')" placeholder="Choose a number." />
+                    <input type="number" id="fib_nr" name="fib_nr" required="required" onInvalid="" placeholder="Choose a number." />
                 </label>
                 <button type="submit" onClick={() => handleClick(document.getElementById("fib_nr").value)}> Get your Fib Number!
                 </button >
