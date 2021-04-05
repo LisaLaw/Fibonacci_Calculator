@@ -3,5 +3,9 @@
         "Fontawesome",
         "truetype",
         "webfont"
+    ],
+    "cSpell.ignoreWords": [
+        "browserslist",
+        "testid"
     ]
 }

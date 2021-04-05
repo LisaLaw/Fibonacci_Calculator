@@ -55,17 +55,20 @@ const handleClick = val => {
 }
 
 class Form extends Component {
+    constructor(props) {
+        super(props)
+    }
     handleSubmit = (e) => {
         e.preventDefault();
     }
 
     render() {
         return (
-            < form className="form" onSubmit={this.handleSubmit}>
+            < form className="form" id="form" onSubmit={this.handleSubmit}>
                 <label htmlFor="fib_nr" id="label">Choose a position in the Fib sequence:
                     <input type="number" id="fib_nr" name="fib_nr" required="required" min="0" step="1" onInvalid={this.handleSubmit} placeholder="Choose a number." />
                 </label>
-                <button type="submit" onClick={() => handleClick(document.getElementById("fib_nr").value)}> Get your Fib Number!
+                <button type="submit" id="submit_button" onClick={() => handleClick(document.getElementById("fib_nr").value)}> Get your Fib Number!
                 </button >
             </form >
         );
