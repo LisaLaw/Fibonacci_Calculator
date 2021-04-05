@@ -3,38 +3,42 @@ import '../Styles/form.css';
 
 function clearResult() {
     var results = document.getElementById("results");
-    if (results) {
-        results.innerHTML = '';
-    }
+    results.innerHTML = '';
     return null;
 }
 
 function removeErrorMessage() {
     var error = document.getElementById("error_message");
     error.parentNode.removeChild(error);
+    document.getElementById("fib_nr").classList.remove("input_error");
+}
+
+function createErrorMsg(msg) {
+    var label = document.getElementById('label');
+    var error = document.createElement('div');
+    error.id = 'error_message';
+    error.innerHTML = msg;
+    document.getElementById("fib_nr").classList.add("input_error");
+    label.appendChild(error);
 }
 
 function fib(n) {
-    var rootElem = document.getElementById('root');
-    var root_children = rootElem.childNodes;
-    if (!document.getElementById("error_message")) {
-        var error = document.createElement('div');
-        error.id = 'error_message';
+    var results = document.getElementById("results");
+    var error = document.getElementById("error_message");
+    if (results) {
+        clearResult();
     }
-    else if (document.getElementById("error_message").innerHTML !== '') {
+    if (error) {
         removeErrorMessage();
-        var error = document.createElement('div');
-        error.id = 'error_message';
     }
-
     if (n < 0) {
-        root_children[0].appendChild(error);
-        error.innerHTML = 'Please choose a positive input.';
+        let msg = 'Please choose a positive value.';
+        createErrorMsg(msg);
         clearResult();
     }
     else if (n % 1 !== 0) {
-        root_children[0].appendChild(error);
-        error.innerHTML = 'Please choose an integer.';
+        let msg = 'Please choose an integer.';
+        createErrorMsg(msg);
         clearResult();
     }
     else if (n < 2) {
@@ -58,8 +62,8 @@ class Form extends Component {
     render() {
         return (
             < form className="form" onSubmit={this.handleSubmit}>
-                <label htmlFor="fib_nr">Type in a number:
-                    <input type="number" id="fib_nr" name="fib_nr" required="required" onInvalid="" placeholder="Choose a number." />
+                <label htmlFor="fib_nr" id="label">Choose a position in the Fib sequence:
+                    <input type="number" id="fib_nr" name="fib_nr" required="required" min="0" step="1" onInvalid={this.handleSubmit} placeholder="Choose a number." />
                 </label>
                 <button type="submit" onClick={() => handleClick(document.getElementById("fib_nr").value)}> Get your Fib Number!
                 </button >

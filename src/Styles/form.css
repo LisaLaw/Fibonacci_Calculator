@@ -10,13 +10,15 @@
 
 label {
     background-color: white;
-    margin-top: 20px;
-    padding: 20px;
+    margin: 20px 0 0 0;
+    padding: 10px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
     flex-grow: 1;
+    left: 0%;
+    right: 0%;
 }
 
 input{
@@ -27,6 +29,10 @@ input{
     box-shadow: 2px 2px 1px 0 #d2d2d2;
 }
 
+.input_error {
+    border: 1px solid red;
+}
+
 button {
     background-color: #f3a309;
     border: #f3a309;
@@ -35,7 +41,7 @@ button {
     padding: 10px;
     margin: 15px;
     box-shadow: 2px 2px 1px 0 #d2d2d2;
-    width: 100%;
+    width: 95%;
     font-size: 14px;
 }
 
@@ -47,7 +53,7 @@ button:hover {
     color: red;
     background-color: white;
     border-radius: 1px;
-    align-self: center;
+    align-self: flex-start;
     margin-top: 10px;
 }
 
