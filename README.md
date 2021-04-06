@@ -1,3 +1,15 @@
+# About the project
+This project is an app that calculates the fibonacci number at a given position in the sequence.
+
+It has input validation with self-styled error messages:
+- it does not permit non-numeric input
+- it does not permit negative input
+- it does not permit float input
+
+If you want to find out more about the thought processes and trial&errors I went through while I coded this app, please look at [this file](https://github.com/LisaLaw/Fibonacci_Calculator/blob/main/Thought_Process.md).
+
+Any questions, feel free to reach out.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
