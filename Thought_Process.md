@@ -30,7 +30,7 @@ My form was not showing in localhost to start with. I realized that instead of `
 
 # 3. onClick, onSubmit etc.
 I had some trouble understanding the concepts of assigning a value to the `results` div in the App, and how to manipulate said state. I started looking into form validation, onSubmit and controlled components.
-This is also when I found `preventDefault()` and `innerHTML`.
+This is also when I found `preventDefault()` and `innerHTML` (see testing / outlook).
 
 I further looked into binding "this".
 
@@ -78,4 +78,45 @@ Somewhere during steps 3 and 4 I started to style the div as well. I loosely bas
 
 # 8. Unit testing
 My code was starting to shape up so I decided to look into unit testing as well. I learned about jest and a typical test flow, before looking into Jest matchers.
-I found this to be the most difficult concept of the whole process. I ran into some frustration because my code was working on the browser, but the test environments were giving me failures. After consulting with various friends who couldn't help out, I posted my question on StackOverflow and realized that the errors were coming from my use of `getElementById`.
+I found this to be the most difficult concept of the whole process. I ran into some frustration because my code was working on the browser, but the test environments were giving me failures. After consulting with various friends who couldn't help out, I posted my question on StackOverflow and realized that the errors were coming from my use of `getElementById` and `innerHTML`.
+
+Here are some of tests I tried which failed:
+```
+import computeFib from '../Fib_Calc';
+
+describe("Fib Function", () => {
+
+    test('Fib result is undefined on negative input', () => {
+        const input = -5;
+        const output = 'undefined';
+        expect(computeFib(input)).toEqual(output);
+    })
+
+    test('Fib result is undefined on float input', () => {
+        const input = 5.5;
+        const output = 'undefined';
+        expect(computeFib(input)).toEqual(output);
+    })
+
+    test('Fib result is n for n<2', () => {
+        const input1 = 0;
+        const input2 = 1;
+        const output1 = 0;
+        const output2 = 1;
+        expect(computeFib(input1)).toEqual(output1);
+        expect(computeFib(input2)).toEqual(output2);
+    })
+
+    test('Fib result is correct for n>2', () => {
+        const input = 3;
+        const fib1 = computeFib(2);
+        const fib2 = computeFib(1);
+        const output = fib1 + fib2;
+        expect(computeFib(input)).toEqual(output);
+    })
+})
+```
+
+# 9. Outlook
+Going further I need to look more into DOM manipulation and what that means for a react app.
+I would also need to re-facture the app with the use of `state` (instead of `innerHTML`, `getElementById`).
