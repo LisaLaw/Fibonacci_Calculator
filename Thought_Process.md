@@ -120,3 +120,4 @@ describe("Fib Function", () => {
 # 9. Outlook
 Going further I need to look more into DOM manipulation and what that means for a react app.
 I would also need to re-facture the app with the use of `state` (instead of `innerHTML`, `getElementById`).
+Lastly, I would look into memory load for the fibonacci calculator I've created to see if there are more efficient ways to achieve the goal.
